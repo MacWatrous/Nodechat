@@ -3,7 +3,7 @@
   "description": "example chat application with socket.io",
   "version": "0.0.1",
   "dependencies": {
-    "apiai": "^2.0.5",
+    "apiai": "2.0.5",
     "express": "2.4.6",
     "socket.io": "0.8.4"
   },
