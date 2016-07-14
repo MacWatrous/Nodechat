@@ -1,12 +1,13 @@
 {
-     "name": "medbot_chat",
-     "description": "example chat application with socket.io",
-     "version": "0.0.1",
-     "dependencies": {
-        "express": "2.4.6",
-        "socket.io": "0.8.4"
-     },
-    "engines": {
+  "name": "medbot_chat",
+  "description": "example chat application with socket.io",
+  "version": "0.0.1",
+  "dependencies": {
+    "apiai": "^2.0.5",
+    "express": "2.4.6",
+    "socket.io": "0.8.4"
+  },
+  "engines": {
     "node": "0.8.x",
     "npm": "1.1.x"
   }
