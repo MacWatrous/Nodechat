@@ -5,7 +5,7 @@ var port = process.env.PORT || 3000;
 var app = require('express').createServer()
 var io = require('socket.io').listen(app);
 var apiai = require('apiai');
-var app = apiai("0b25372273e042f29d6333faec6d4065");
+var app2 = apiai("0b25372273e042f29d6333faec6d4065");
 
 app.listen(port);
 
@@ -29,7 +29,7 @@ io.sockets.on('connection', function (socket) {
     socket.on('sendchat', function (data) {
         // we tell the client to execute 'updatechat' with 2 parameters
         io.sockets.emit('updatechat', socket.username, data);
-        var request = app.textRequest(data);
+        var request = app2.textRequest(data);
  
         request.on('response', function(response) {
             console.log(response);
