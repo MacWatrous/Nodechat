@@ -12,7 +12,7 @@ app.listen(port);
 // Heroku setting for long polling - assuming io is the Socket.IO server object
 io.configure(function () { 
   io.set("transports", ["xhr-polling"]); 
-  io.set("polling duration", 100); 
+  io.set("polling duration", 10); 
 });
 
 // routing
@@ -30,7 +30,7 @@ io.sockets.on('connection', function (socket) {
         // we tell the client to execute 'updatechat' with 2 parameters
         io.sockets.emit('updatechat', socket.username, data);
         var request = app2.textRequest(data);
- 
+        
         request.on('response', function(response) {
             console.log(response);
             io.sockets.emit('updatechat', bot, response);
