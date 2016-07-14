@@ -2,7 +2,7 @@
 
 var port = process.env.PORT || 3000;
 
-var app = require('express').createServer()
+var app = require('express').createServer();
 var io = require('socket.io').listen(app);
 var apiai = require('apiai');
 var app2 = apiai("0b25372273e042f29d6333faec6d4065");
