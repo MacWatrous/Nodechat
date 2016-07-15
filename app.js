@@ -29,11 +29,16 @@ io.sockets.on('connection', function (socket) {
     socket.on('sendchat', function (data) {
         // we tell the client to execute 'updatechat' with 2 parameters
         io.sockets.emit('updatechat', socket.username, data);
-        var request = app2.textRequest(data);
-        
-        request.on('response', function(response) {
-            console.log(response);
-            io.sockets.emit('updatechat', 'bot', response.result.fulfillment.speech);
+        if (socket.username != 'bot'){
+            var request = app2.textRequest(data);
+            request.on('response', function(response) {
+                console.log(response);
+                if (response.status.code == '200'){
+                    io.sockets.emit('updatechat', 'bot', response.result.fulfillment.speech);
+                } else {
+                    io.sockets.emit('updatechat', 'bot', 'Hmm, I don\'t quite have an answer for you, let me check further.');  
+                }
+            }
         });
  
         request.on('error', function(error) {
