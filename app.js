@@ -33,7 +33,8 @@ io.sockets.on('connection', function (socket) {
         
         request.on('response', function(response) {
             console.log(response);
-            io.sockets.emit('updatechat', 'bot', response);
+            obj = JSON.parse(response);
+            io.sockets.emit('updatechat', 'bot', obj.result.fufillment.speech);
         });
  
         request.on('error', function(error) {
