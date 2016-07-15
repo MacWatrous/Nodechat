@@ -39,7 +39,7 @@ io.sockets.on('connection', function (socket) {
                     io.sockets.emit('updatechat', 'bot', 'Hmm, I don\'t quite have an answer for you, let me check further.');  
                 }
             }
-        });
+        }
  
         request.on('error', function(error) {
             console.log(error);
