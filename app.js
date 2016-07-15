@@ -34,7 +34,7 @@ io.sockets.on('connection', function (socket) {
         request.on('response', function(response) {
             console.log(response);
             obj = JSON.parse(response);
-            io.sockets.emit('updatechat', 'bot', obj.result.fulfillment.speech);
+            io.sockets.emit('updatechat', 'bot', 'heey');
         });
  
         request.on('error', function(error) {
