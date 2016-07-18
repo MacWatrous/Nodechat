@@ -28,25 +28,23 @@ io.sockets.on('connection', function (socket) {
     // when the client emits 'sendchat', this listens and executes
     socket.on('sendchat', function (data) {
         // we tell the client to execute 'updatechat' with 2 parameters
-        io.sockets.emit('updatechat', socket.username, data);
-        if (socket.username != 'bot'){
-            var request = app2.textRequest(data);
-            request.on('response', function(response) {
-                console.log(response);
-                if (response.status.code == '200'){
-                    io.sockets.emit('updatechat', 'bot', response.result.fulfillment.speech);
-                } else {
-                    io.sockets.emit('updatechat', 'bot', 'Hmm, I don\'t quite have an answer for you, let me check further.');  
-                }
-            });
-            request.on('error', function(error) {
-            console.log(error);
-            });
-     
-            request.end()
-        }
- 
-        
+        if (data)
+            io.sockets.emit('updatechat', socket.username, data);
+            if (socket.username != 'bot'){
+                var request = app2.textRequest(data);
+                request.on('response', function(response) {
+                    console.log(response);
+                    if (response.status.code == '200'){
+                        io.sockets.emit('updatechat', 'bot', response.result.fulfillment.speech);
+                    } else {
+                        io.sockets.emit('updatechat', 'bot', 'Hmm, I don\'t quite have an answer for you, let me check further.');  
+                    }
+                });
+                request.on('error', function(error) {
+                console.log(error);
+                });
+                request.end()
+            }
     });
 
     // when the client emits 'adduser', this listens and executes
