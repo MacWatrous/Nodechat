@@ -13,6 +13,9 @@
         $('#conversation').append('<b>'+username + ':</b> ' + data + '<br>');
     });
 
+    socket.on('alert', function(){
+        socket.emit('alert', prompt("Unkown user question, please intervene"));
+    });
     // listener, whenever the server emits 'updateusers', this updates the username list
     socket.on('updateusers', function(data) {
         $('#users').empty();
