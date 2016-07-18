@@ -65,8 +65,9 @@ io.sockets.on('connection', function (socket) {
     });
 
     // when the client emits 'adduser', this listens and executes
-    socket.on('alert', function(){
+    socket.on('alert', function(message){
         console.log('alerted');
+        socket.emit('updatechat', 'bot', message);
     });
 
     // when the user disconnects.. perform this
