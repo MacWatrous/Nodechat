@@ -6,8 +6,6 @@ var app = require('express').createServer();
 var io = require('socket.io').listen(app);
 var apiai = require('apiai');
 var app2 = apiai("0b25372273e042f29d6333faec6d4065");
-var clients = [];
-var usernames2 = [];
 
 app.listen(port);
 
@@ -26,28 +24,26 @@ app.get('/', function (req, res) {
 var usernames = {};
 
 io.sockets.on('connection', function (socket) {
-    clients.push(socket);
     // when the client emits 'sendchat', this listens and executes
     socket.on('sendchat', function (data) {
         // we tell the client to execute 'updatechat' with 2 parameters
-        if (data)
-            io.sockets.emit('updatechat', socket.username, data);
-            if (socket.username != 'bot'){
-                var request = app2.textRequest(data);
-                request.on('response', function(response) {
-                    console.log(response);
-                    if (response.status.code == '200'){
-                        io.sockets.emit('updatechat', 'bot', response.result.fulfillment.speech);
-                    } else {
-                        io.sockets.emit('updatechat', 'bot', 'Hmm, I don\'t quite have an answer for you, let me check further.');
-                        socket.broadcast.emit('alert');  
-                    }
-                });
-                request.on('error', function(error) {
-                console.log(error);
-                });
-                request.end()
-            }
+        io.sockets.emit('updatechat', socket.username, data);
+        if (socket.username != 'bot'){
+            var request = app2.textRequest(data);
+            request.on('response', function(response) {
+                console.log(response);
+                if (response.status.code == '200'){
+                    io.sockets.emit('updatechat', 'bot', response.result.fulfillment.speech);
+                } else {
+                    io.sockets.emit('updatechat', 'bot', 'Hmm, I don\'t quite have an answer for you, let me check further.');
+                    socket.broadcast.emit('alert');  
+                }
+            });
+            request.on('error', function(error) {
+            console.log(error);
+            });
+            request.end()
+        }
     });
 
     // when the client emits 'adduser', this listens and executes
@@ -67,7 +63,7 @@ io.sockets.on('connection', function (socket) {
     // when the client emits 'adduser', this listens and executes
     socket.on('alert', function(message){
         console.log('alerted');
-        socket.emit('updatechat', 'bot', message);
+        io.socket.emit('updatechat', 'bot', message);
     });
 
     // when the user disconnects.. perform this
