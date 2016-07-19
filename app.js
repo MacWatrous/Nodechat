@@ -90,7 +90,7 @@ io.sockets.on('connection', function (socket) {
                     console.log('problem with request: ${e.message}');
                 });
 
-                req.write(postData);
+                req.write(putData);
                 req.end();
             }
         }
