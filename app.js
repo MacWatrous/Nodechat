@@ -69,7 +69,7 @@ io.sockets.on('connection', function (socket) {
                     path: '/v1/entities/drugs/entries',
                     method: 'PUT',
                     headers: {
-                        'Authorization': 'Bearer b9c554f76c3b471780436428dd458afd'
+                        'Authorization': 'Bearer b9c554f76c3b471780436428dd458afd',
                         'Content-Type': 'application/json; charset=utf-8'
                     }                            
                 };
