@@ -66,7 +66,7 @@ io.sockets.on('connection', function (socket) {
                 var options = {
                     hostname: 'http://api.api.ai',
                     port: 80,
-                    path = '/v1/entities/drugs/entries',
+                    path: '/v1/entities/drugs/entries',
                     method: 'PUT',
                     headers: {
                         'Authorization': 'Bearer b9c554f76c3b471780436428dd458afd'
