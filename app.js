@@ -74,7 +74,7 @@ io.sockets.on('connection', function (socket) {
                     }                            
                 };
 
-                var req = http.request(options, (res) => {
+                /*var req = http.request(options, (res) => {
                     console.log('STATUS: ${res.statusCode}');
                     console.log('HEADERS: ${JSON.stringify(res.headers)}');
                     res.setEncoding('utf8');
@@ -91,7 +91,7 @@ io.sockets.on('connection', function (socket) {
                 });
 
                 req.write(putData);
-                req.end();
+                req.end();*/
             }
         }
     }
