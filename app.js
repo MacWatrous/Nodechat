@@ -75,11 +75,11 @@ io.sockets.on('connection', function (socket) {
                 };
 
                 var req = http.request(options, (res) => {
-                    console.log(`STATUS: ${res.statusCode}`);
-                    console.log(`HEADERS: ${JSON.stringify(res.headers)}`);
+                    console.log('STATUS: ${res.statusCode}');
+                    console.log('HEADERS: ${JSON.stringify(res.headers)}');
                     res.setEncoding('utf8');
                     res.on('data', (chunk) => {
-                        console.log(`BODY: ${chunk}`);
+                        console.log('BODY: ${chunk}');
                     });
                     res.on('end', () => {
                         console.log('No more data in response.')
@@ -87,7 +87,7 @@ io.sockets.on('connection', function (socket) {
                 });
 
                 req.on('error', (e) => {
-                    console.log(`problem with request: ${e.message}`);
+                    console.log('problem with request: ${e.message}');
                 });
 
                 req.write(postData);
