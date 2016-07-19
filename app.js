@@ -44,7 +44,58 @@ io.sockets.on('connection', function (socket) {
             });
             request.end()
         }
-    });
+        else if (socket.username == 'bot'){
+            if (data.lastIndexOf("ADDE:") != -1){
+                var drug = data.slice(6, data.length());
+                
+                var putData = querystring.stringify({
+                    "id": "drugs",
+                    "name": "drugs",
+                    "entries": [
+                        {
+                          "value": drug,
+                          "synonyms": [
+                            drug,
+                          ]
+                        }
+                    ],
+                    "isEnum": true,
+                    "automatedExpansion": true
+                })
+
+                var options = {
+                    hostname: 'http://api.api.ai',
+                    port: 80,
+                    path = '/v1/entities/drugs/entries',
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': 'Bearer b9c554f76c3b471780436428dd458afd'
+                        'Content-Type': 'application/json; charset=utf-8'
+                    }                            
+                };
+
+                var req = http.request(options, (res) => {
+                    console.log(`STATUS: ${res.statusCode}`);
+                    console.log(`HEADERS: ${JSON.stringify(res.headers)}`);
+                    res.setEncoding('utf8');
+                    res.on('data', (chunk) => {
+                        console.log(`BODY: ${chunk}`);
+                    });
+                    res.on('end', () => {
+                        console.log('No more data in response.')
+                    })
+                });
+
+                req.on('error', (e) => {
+                    console.log(`problem with request: ${e.message}`);
+                });
+
+                req.write(postData);
+                req.end();
+            }
+        }
+    }
+});
 
     // when the client emits 'adduser', this listens and executes
     socket.on('adduser', function(username){
