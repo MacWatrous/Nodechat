@@ -49,12 +49,12 @@ io.sockets.on('connection', function (socket) {
             if (data.lastIndexOf("ADDE:") != -1){
                 var drug = data.split(" ");
                 drug = drug[1];
-                var formData = {[{
+                var formData = {
                     "value": drug,
                     "synonyms": [
                     	drug
                     ]
-                }]};
+                };
 
                 var options = {
                     url: 'http://api.api.ai/v1/entities/drugs/entries',
