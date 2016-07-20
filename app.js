@@ -75,7 +75,6 @@ io.sockets.on('connection', function (socket) {
             }
         }
     });
-});
 
     // when the client emits 'adduser', this listens and executes
     socket.on('adduser', function(username){
