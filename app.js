@@ -48,7 +48,7 @@ io.sockets.on('connection', function (socket) {
         }
         else if (socket.username == 'bot'){
             if (data.lastIndexOf("ADDE:") != -1){
-                var drug = data.split(" ");
+                var drug = data.split(": ");
                 drug = drug[1];
                 console.log(drug);
                 request.put({
