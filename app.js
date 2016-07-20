@@ -50,8 +50,8 @@ io.sockets.on('connection', function (socket) {
                 var drug = data.slice(6, data.length());
                 
                 var formData = {
-                    "id": "drugs",
-                    "name": "drugs",
+                    "id": "drug",
+                    "name": "drug",
                     "entries": [
                         {
                           "value": drug,
