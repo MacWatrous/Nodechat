@@ -50,6 +50,22 @@ io.sockets.on('connection', function (socket) {
             if (data.lastIndexOf("ADDE:") != -1){
                 var drug = data.split(": ");
                 console.log(drug);
+                
+                request.get({
+	                headers: {
+	                    'Authorization': 'Bearer b9c554f76c3b471780436428dd458afd',
+	                    'Content-Type': 'application/json',
+	                    'Accept': 'application/json'
+	                },
+	                url: 'https://api.api.ai/v1/entities/drug',
+	                json: true
+	            }, function(error, response, body){
+	                console.log(body);
+	                var synonyms = response.entries[drug[1]].synonyms;
+	                console.log(synonyms);
+	            });
+
+
                 if (drug[2] == null){
 	                request.put({
 	                	headers: {
