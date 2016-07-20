@@ -6,6 +6,7 @@ var app = require('express').createServer();
 var io = require('socket.io').listen(app);
 var apiai = require('apiai');
 var app2 = apiai("0b25372273e042f29d6333faec6d4065");
+var http = require('http');
 
 app.listen(port);
 
@@ -29,8 +30,8 @@ io.sockets.on('connection', function (socket) {
         // we tell the client to execute 'updatechat' with 2 parameters
         io.sockets.emit('updatechat', socket.username, data);
         if (socket.username != 'bot'){
-            var request2 = app2.textRequest(data);
-            request2.on('response', function(response) {
+            var request = app2.textRequest(data);
+            request.on('response', function(response) {
                 console.log(response);
                 if (response.status.code == '200'){
                     io.sockets.emit('updatechat', 'bot', response.result.fulfillment.speech);
@@ -39,10 +40,10 @@ io.sockets.on('connection', function (socket) {
                     socket.broadcast.emit('alert');  
                 }
             });
-            request2.on('error', function(error) {
+            request.on('error', function(error) {
             console.log(error);
             });
-            request2.end()
+            request.end()
         }
         else if (socket.username == 'bot'){
             if (data.lastIndexOf("ADDE:") != -1){
