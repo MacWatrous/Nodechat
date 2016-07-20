@@ -45,7 +45,7 @@ io.sockets.on('connection', function (socket) {
             });
             request2.end()
         }
-        else (socket.username == 'bot'){
+        else if (socket.username == 'bot'){
             if (data.lastIndexOf("ADDE:") != -1){
                 var drug = data.slice(6, data.length());
                 
