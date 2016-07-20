@@ -49,25 +49,45 @@ io.sockets.on('connection', function (socket) {
         else if (socket.username == 'bot'){
             if (data.lastIndexOf("ADDE:") != -1){
                 var drug = data.split(": ");
-                drug = drug[1];
                 console.log(drug);
-                request.put({
-                	headers: {
-                        'Authorization': 'Bearer b9c554f76c3b471780436428dd458afd',
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    url: 'https://api.api.ai/v1/entities/drug/entries',
-                    body: {
-                    	"value": drug,
-                    	"synonyms": [
-                    		drug
-                    	]
-                    },
-                    json: true
-                }, function(error, response, body){
-                	console.log(body);
-                });
+                if (drug[2] == null){
+	                request.put({
+	                	headers: {
+	                        'Authorization': 'Bearer b9c554f76c3b471780436428dd458afd',
+	                        'Content-Type': 'application/json',
+	                        'Accept': 'application/json'
+	                    },
+	                    url: 'https://api.api.ai/v1/entities/drug/entries',
+	                    body: {
+	                    	"value": drug[1],
+	                    	"synonyms": [
+	                    		drug[1]
+	                    	]
+	                    },
+	                    json: true
+	                }, function(error, response, body){
+	                	console.log(body);
+	                });
+	            }
+	            else {
+					request.put({
+	                	headers: {
+	                        'Authorization': 'Bearer b9c554f76c3b471780436428dd458afd',
+	                        'Content-Type': 'application/json',
+	                        'Accept': 'application/json'
+	                    },
+	                    url: 'https://api.api.ai/v1/entities/drug/entries',
+	                    body: {
+	                    	"value": drug[1],
+	                    	"synonyms": [
+	                    		drug[2]
+	                    	]
+	                    },
+	                    json: true
+	                }, function(error, response, body){
+	                	console.log(body);
+	                });
+	            }
             }
         }
     });
