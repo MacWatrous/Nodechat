@@ -61,7 +61,7 @@ io.sockets.on('connection', function (socket) {
                     ],
                     "isEnum": true,
                     "automatedExpansion": true
-                })
+                });
 
                 var options = {
                     hostname: 'http://api.api.ai',
