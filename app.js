@@ -60,7 +60,8 @@ io.sockets.on('connection', function (socket) {
 	                url: 'https://api.api.ai/v1/entities/drug',
 	                json: true
 	            }, function(error, response, body){
-	                console.log(body);
+	                //console.log(body);
+	                response=JSON.parse(response);
 	                var synonyms = response.entries[drug[1]].synonyms;
 	                console.log(synonyms);
 	            });
