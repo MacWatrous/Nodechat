@@ -62,7 +62,8 @@ io.sockets.on('connection', function (socket) {
                     	"synonyms": [
                     		drug
                     	]
-                    }
+                    },
+                    json: true
                 }, function(error, response, body){
                 	console.log(body);
                 });
