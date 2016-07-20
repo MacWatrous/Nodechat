@@ -6,7 +6,7 @@ var app = require('express').createServer();
 var io = require('socket.io').listen(app);
 var apiai = require('apiai');
 var app2 = apiai("0b25372273e042f29d6333faec6d4065");
-var http = require('http');
+var request = require('request');
 
 app.listen(port);
 
@@ -30,8 +30,8 @@ io.sockets.on('connection', function (socket) {
         // we tell the client to execute 'updatechat' with 2 parameters
         io.sockets.emit('updatechat', socket.username, data);
         if (socket.username != 'bot'){
-            var request = app2.textRequest(data);
-            request.on('response', function(response) {
+            var request2 = app2.textRequest(data);
+            request2.on('response', function(response) {
                 console.log(response);
                 if (response.status.code == '200'){
                     io.sockets.emit('updatechat', 'bot', response.result.fulfillment.speech);
@@ -40,16 +40,16 @@ io.sockets.on('connection', function (socket) {
                     socket.broadcast.emit('alert');  
                 }
             });
-            request.on('error', function(error) {
+            request2.on('error', function(error) {
             console.log(error);
             });
-            request.end()
+            request2.end()
         }
         else if (socket.username == 'bot'){
             if (data.lastIndexOf("ADDE:") != -1){
                 var drug = data.slice(6, data.length());
                 
-                var putData = querystring.stringify({
+                var formData = {
                     "id": "drugs",
                     "name": "drugs",
                     "entries": [
@@ -62,37 +62,16 @@ io.sockets.on('connection', function (socket) {
                     ],
                     "isEnum": true,
                     "automatedExpansion": true
-                });
+                };
 
                 var options = {
-                    hostname: 'http://api.api.ai',
-                    port: 80,
-                    path: '/v1/entities/drugs/entries',
-                    method: 'PUT',
+                    url: 'http://api.api.ai/v1/entities/drugs/entries',
                     headers: {
                         'Authorization': 'Bearer b9c554f76c3b471780436428dd458afd',
                         'Content-Type': 'application/json; charset=utf-8'
                     }                            
                 };
-
-                var req = http.request(options, (res) => {
-                    console.log('STATUS: ${res.statusCode}');
-                    console.log('HEADERS: ${JSON.stringify(res.headers)}');
-                    res.setEncoding('utf8');
-                    res.on('data', (chunk) => {
-                        console.log('BODY: ${chunk}');
-                    });
-                    res.on('end', () => {
-                        console.log('No more data in response.')
-                    })
-                });
-
-                req.on('error', (e) => {
-                    console.log('problem with request: ${e.message}');
-                });
-
-                req.write(putData);
-                req.end();
+                request.put(options, formData);
             }
         }
     }

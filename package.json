@@ -6,10 +6,10 @@
     "apiai": "2.0.5",
     "express": "2.4.6",
     "socket.io": "0.8.4",
-    "http": "x.x.x"
+    "request": "2.73.0"
   },
   "engines": {
-    "node": "0.8.x",
+    "node": "6.3.0",
     "npm": "3.10.5"
   }
 }
