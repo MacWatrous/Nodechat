@@ -49,6 +49,7 @@ io.sockets.on('connection', function (socket) {
             if (data.lastIndexOf("ADDE:") != -1){
                 var drug = data.split(" ");
                 drug = drug[1];
+                console.log(drug);
                 // request.put({
                 // 	headers: {
                 //         'Authorization': 'Bearer b9c554f76c3b471780436428dd458afd',
