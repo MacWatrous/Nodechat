@@ -6,7 +6,7 @@
     "apiai": "2.0.5",
     "express": "2.4.6",
     "socket.io": "0.8.4",
-    "http": "5.7.0"
+    "http": "x.x.x"
   },
   "engines": {
     "node": "0.8.x",
