@@ -49,22 +49,22 @@ io.sockets.on('connection', function (socket) {
             if (data.lastIndexOf("ADDE:") != -1){
                 var drug = data.split(" ");
                 drug = drug[1];
-                request.put({
-                	headers: {
-                        'Authorization': 'Bearer b9c554f76c3b471780436428dd458afd',
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    url: 'http://api.api.ai/v1/entities/drugs/entries',
-                    body: {
-                    	"value": drug,
-                    	"synonyms": [
-                    		drug
-                    	]
-                    }
-                }, function(error, response, body){
-                	console.log(body);
-                });
+                // request.put({
+                // 	headers: {
+                //         'Authorization': 'Bearer b9c554f76c3b471780436428dd458afd',
+                //         'Content-Type': 'application/json',
+                //         'Accept': 'application/json'
+                //     },
+                //     url: 'http://api.api.ai/v1/entities/drugs/entries',
+                //     body: {
+                //     	"value": drug,
+                //     	"synonyms": [
+                //     		drug
+                //     	]
+                //     }
+                // }, function(error, response, body){
+                // 	console.log(body);
+                // });
             }
         }
     });
