@@ -28,7 +28,8 @@ io.sockets.on('connection', function (socket) {
     // when the client emits 'sendchat', this listens and executes
     socket.on('sendchat', function (data) {
         // we tell the client to execute 'updatechat' with 2 parameters
-        io.sockets.emit('updatechat', socket.username, data);
+        if (data.lastIndexOf("ADD") == -1)
+        	io.sockets.emit('updatechat', socket.username, data);
         if (socket.username != 'bot'){
             var request2 = app2.textRequest(data);
             request2.on('response', function(response) {
