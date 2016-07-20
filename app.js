@@ -56,7 +56,7 @@ io.sockets.on('connection', function (socket) {
                         'Content-Type': 'application/json',
                         'Accept': 'application/json'
                     },
-                    url: 'http://api.api.ai/v1/entities/drug/entries',
+                    url: 'https://api.api.ai/v1/entities/drug/entries',
                     body: {
                     	"value": drug,
                     	"synonyms": [
