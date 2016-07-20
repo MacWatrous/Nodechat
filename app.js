@@ -50,22 +50,22 @@ io.sockets.on('connection', function (socket) {
                 var drug = data.split(" ");
                 drug = drug[1];
                 console.log(drug);
-                // request.put({
-                // 	headers: {
-                //         'Authorization': 'Bearer b9c554f76c3b471780436428dd458afd',
-                //         'Content-Type': 'application/json',
-                //         'Accept': 'application/json'
-                //     },
-                //     url: 'http://api.api.ai/v1/entities/drugs/entries',
-                //     body: {
-                //     	"value": drug,
-                //     	"synonyms": [
-                //     		drug
-                //     	]
-                //     }
-                // }, function(error, response, body){
-                // 	console.log(body);
-                // });
+                request.put({
+                	headers: {
+                        'Authorization': 'Bearer b9c554f76c3b471780436428dd458afd',
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    url: 'http://api.api.ai/v1/entities/drug/entries',
+                    body: {
+                    	"value": drug,
+                    	"synonyms": [
+                    		drug
+                    	]
+                    }
+                }, function(error, response, body){
+                	console.log(body);
+                });
             }
         }
     });
@@ -84,7 +84,7 @@ io.sockets.on('connection', function (socket) {
         io.sockets.emit('updateusers', usernames);
     });
 
-    // when the client emits 'adduser', this listens and executes
+    // when the client emits 'alert', this listens and executes
     socket.on('alert', function(message){
         console.log('alerted');
         io.sockets.emit('updatechat', 'bot', message);
