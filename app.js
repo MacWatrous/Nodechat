@@ -49,26 +49,19 @@ io.sockets.on('connection', function (socket) {
             if (data.lastIndexOf("ADDE:") != -1){
                 var drug = data.split(" ");
                 drug = drug[1];
-                var formData = {
-                    "id": "drug",
-                    "name": "drug",
-                    "entries": [
-                        {
-                          "value": drug,
-                          "synonyms": [
-                            drug,
-                          ]
-                        }
-                    ],
-                    "isEnum": true,
-                    "automatedExpansion": true
-                };
+                var formData = {[{
+                    "value": drug,
+                    "synonyms": [
+                    	drug
+                    ]
+                }]};
 
                 var options = {
                     url: 'http://api.api.ai/v1/entities/drugs/entries',
                     headers: {
                         'Authorization': 'Bearer b9c554f76c3b471780436428dd458afd',
-                        'Content-Type': 'application/json; charset=utf-8'
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
                     }                            
                 };
                 request.put(options, formData);
