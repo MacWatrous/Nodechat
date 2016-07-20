@@ -45,7 +45,7 @@ io.sockets.on('connection', function (socket) {
             });
             request2.end()
         }
-        else if (socket.username == 'bot'){
+        else (socket.username == 'bot'){
             if (data.lastIndexOf("ADDE:") != -1){
                 var drug = data.slice(6, data.length());
                 
@@ -74,7 +74,7 @@ io.sockets.on('connection', function (socket) {
                 request.put(options, formData);
             }
         }
-    }
+    });
 });
 
     // when the client emits 'adduser', this listens and executes
