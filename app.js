@@ -67,6 +67,7 @@ io.sockets.on('connection', function (socket) {
 	                //console.log(response.entries.length);
 	            });
                 function gotData(body){
+                	console.log("hi");
                 	console.log(body.entries.length);
                 	for (var i=0; i<body.entries.length; i++){
 		                //console.log("hi");
