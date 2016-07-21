@@ -62,7 +62,7 @@ io.sockets.on('connection', function (socket) {
 					body = JSON.parse(body);
 					console.log(body.entries.length);
 	            	console.log(body.entries[1].value);
-	                //console.log(drug);
+	                console.log(drug);
 	                //var response2 = JSON.parse(body);
 	                //console.log(response.entries.length);
 	            });
