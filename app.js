@@ -61,19 +61,18 @@ io.sockets.on('connection', function (socket) {
 	            }, function(error, response, body){
 	                //console.log(body);
 	                response=JSON.parse(body);
-	               
 	            });
-				console.log(response.entries.length);
-	            console.log(response.entries[1].value);
-	            console.log(drug[1]);
+				//console.log(response.entries.length);
+	            //console.log(response.entries[1].value);
+	            //console.log(drug[1]);
 	            //console.log(response);
-	            for (var i=0; i<response.entries.length; i++){
+	            //for (var i=0; i<response.entries.length; i++){
 	                //console.log("hi");
-	                if (response.entries[i].value == drug[1]){
+	                //if (response.entries[i].value == drug[1]){
 	                	//console.log(response.entries[i].synonyms[0]);
-	                	console.log('hello match here!');
-	                }
-	            }
+	                	//console.log('hello match here!');
+	                //}
+	            //}
                 if (drug[2] == null){
 	                request.put({
 	                	headers: {
