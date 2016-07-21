@@ -61,7 +61,7 @@ io.sockets.on('connection', function (socket) {
 	                //console.log(body);
 	                //console.log(drug);
 	                //var response2 = body;
-	                console.log(body.entries.length);
+	                console.log(response.entries.length);
 	            });
 				//console.log(response.entries.length);
 	            //console.log(response.entries[1].value);
