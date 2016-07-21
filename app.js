@@ -61,23 +61,16 @@ io.sockets.on('connection', function (socket) {
 					//console.log(body);
 					body = JSON.parse(body);
 					console.log(drug);
+
 					console.log(body.entries.length);
 	            	console.log(body.entries[1].value);
-	                gotData(body);
-	                //var response2 = JSON.parse(body);
-	                //console.log(response.entries.length);
-	            });
-                function gotData(body){
-                	console.log("hi");
-                	console.log(body.entries.length);
-                	for (var i=0; i<body.entries.length; i++){
-		                //console.log("hi");
+	                for (var i=0; i<body.entries.length; i++){
 		                if (body.entries[i].value == drug[1]){
 		                	console.log(body.entries[i].synonyms[0]);
 		                	console.log('hello match here!');
 		                }
-	            	}
-                }
+		            }
+	            });
 	            //console.log(drug[1]);
 	            //console.log(response);
 	            //for (var i=0; i<response.entries.length; i++){
