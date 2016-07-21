@@ -50,8 +50,8 @@ io.sockets.on('connection', function (socket) {
             if (data.lastIndexOf("ADDE:") != -1){
                 var drug = data.split(": ");
                 console.log(drug);
-                
-                var response = request.get({
+                var response;
+                request.get({
 	                headers: {
 	                    'Authorization': 'Bearer b9c554f76c3b471780436428dd458afd',
 	                    'Content-Type': 'application/json',
@@ -60,7 +60,7 @@ io.sockets.on('connection', function (socket) {
 	                url: 'https://api.api.ai/v1/entities/drug',
 	            }, function(error, response, body){
 	                console.log(body);
-	                return body;
+	                response = body;
 	            });
 				console.log(response.entries.length);
 	            //console.log(response.entries[1].value);
