@@ -57,12 +57,11 @@ io.sockets.on('connection', function (socket) {
 	                    'Accept': 'application/json'
 	                },
 	                url: 'https://api.api.ai/v1/entities/drug',
-	            }, drug, function(error, response, body){
+	            }, function(error, response, body){
 	                console.log(body);
 	                console.log(drug);
 	                var response2 = body;
 	                console.log(response2.entries.length);
-
 	            });
 				//console.log(response.entries.length);
 	            //console.log(response.entries[1].value);
