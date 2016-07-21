@@ -51,7 +51,7 @@ io.sockets.on('connection', function (socket) {
                 var drug = data.split(": ");
                 console.log(drug);
                 
-                request.get({
+                var result = request.get({
 	                headers: {
 	                    'Authorization': 'Bearer b9c554f76c3b471780436428dd458afd',
 	                    'Content-Type': 'application/json',
@@ -60,9 +60,10 @@ io.sockets.on('connection', function (socket) {
 	                url: 'https://api.api.ai/v1/entities/drug',
 	            }, function(error, response, body){
 	                //console.log(body);
-	                response=JSON.parse(body);
+	                
 	            });
-				//console.log(response.entries.length);
+	            response=JSON.parse(result.body);
+				console.log(response.entries.length);
 	            //console.log(response.entries[1].value);
 	            //console.log(drug[1]);
 	            //console.log(response);
