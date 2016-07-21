@@ -67,8 +67,9 @@ io.sockets.on('connection', function (socket) {
 	                //console.log(response.entries.length);
 	            });
                 function gotData(body){
+                	console.log(body.entries.length);
                 	for (var i=0; i<body.entries.length; i++){
-		                console.log("hi");
+		                //console.log("hi");
 		                if (body.entries[i].value == drug[1]){
 		                	console.log(body.entries[i].synonyms[0]);
 		                	console.log('hello match here!');
