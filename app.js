@@ -62,6 +62,7 @@ io.sockets.on('connection', function (socket) {
 	                //console.log(body);
 	                response=JSON.parse(body);
 	                console.log(response.entries.length);
+	                console.log(response.entries[1].value)
 	                //console.log(response);
 	                for (var i=0; i<response.entries.length; i++)
 	                	for (var name in response.entries[i]){
