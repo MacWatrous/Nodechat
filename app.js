@@ -58,10 +58,10 @@ io.sockets.on('connection', function (socket) {
 	                },
 	                url: 'https://api.api.ai/v1/entities/drug',
 	            }, function(error, response, body){
-					console.log(body);
-					response = JSON.parse(body);
-					console.log(response.entries.length);
-	            	console.log(response.entries[1].value);
+					//console.log(body);
+					//response = JSON.parse(body);
+					console.log(body.entries.length);
+	            	console.log(body.entries[1].value);
 	                //console.log(drug);
 	                //var response2 = JSON.parse(body);
 	                //console.log(response.entries.length);
