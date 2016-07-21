@@ -75,7 +75,6 @@ io.sockets.on('connection', function (socket) {
 		                	}
 		                }
 		            }
-
 ////////////////////COPY AND PASTE///////////////////////////////
 		            if (drug[2] == null){
 		                request.put({
