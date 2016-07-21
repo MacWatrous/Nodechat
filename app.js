@@ -58,7 +58,7 @@ io.sockets.on('connection', function (socket) {
 	                },
 	                url: 'https://api.api.ai/v1/entities/drug',
 	            }, function(error, response, body){
-	                console.log(body);
+	                //console.log(body);
 	                console.log(drug);
 	                var response2 = body;
 	                console.log(response2.entries.length);
