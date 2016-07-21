@@ -60,8 +60,8 @@ io.sockets.on('connection', function (socket) {
 	            }, function(error, response, body){
 	                //console.log(body);
 	                //console.log(drug);
-	                //var response2 = body;
-	                console.log(response.entries.length);
+	                var response2 = JSON.parse(body);
+	                console.log(response2.entries.length);
 	            });
 				//console.log(response.entries.length);
 	            //console.log(response.entries[1].value);
