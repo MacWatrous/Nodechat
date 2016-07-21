@@ -64,13 +64,11 @@ io.sockets.on('connection', function (socket) {
 	                console.log(response.entries.length);
 	                console.log(response.entries[1].value)
 	                //console.log(response);
-	                for (var i=0; i<response.entries.length; i++)
-	                	for (var name in response.entries[i]){
-	                		if (name == drug[1]){
-	                			synonyms = response.entries[i][name].synonyms;
-	                			console.log(synonyms);
-	                		}
+	                for (var i=0; i<response.entries.length; i++){
+	                	if (response.entries[i].value == drug[1]){
+	                		console.log(response.entries[i].synonyms);
 	                	}
+	                }
 	            })
 
                 if (drug[2] == null){
