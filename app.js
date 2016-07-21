@@ -60,6 +60,7 @@ io.sockets.on('connection', function (socket) {
 	            }, function(error, response, body){
 					//console.log(body);
 					body = JSON.parse(body);
+					console.log(drug);
 					console.log(body.entries.length);
 	            	console.log(body.entries[1].value);
 	                gotData(body);
