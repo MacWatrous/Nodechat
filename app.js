@@ -58,7 +58,7 @@ io.sockets.on('connection', function (socket) {
 	                    'Accept': 'application/json'
 	                },
 	                url: 'https://api.api.ai/v1/entities/drug',
-	            }, function(error, response, body){
+	            }, drug, function(error, response, body){
 	                //console.log(body);
 	                response=JSON.parse(body);
 	                console.log(response.entries.length);
