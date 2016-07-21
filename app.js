@@ -61,9 +61,9 @@ io.sockets.on('connection', function (socket) {
 	            }, function(error, response, body){
 	                //console.log(body);
 	                response=JSON.parse(body);
-	                console.log(response);
-	                //var synonyms = response.entries[drug[1]].synonyms;
-	                //console.log(synonyms);
+	                //console.log(response);
+	                var synonyms = response.entries[drug[1]].synonyms;
+	                console.log(synonyms);
 	            })
 
 
