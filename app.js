@@ -58,13 +58,14 @@ io.sockets.on('connection', function (socket) {
 	                },
 	                url: 'https://api.api.ai/v1/entities/drug',
 	            }, function(error, response, body){
-	                //console.log(body);
+					response = body;
+					console.log(response.entries.length);
+	            	console.log(response.entries[1].value);
 	                //console.log(drug);
-	                var response2 = JSON.parse(body);
-	                console.log(response.entries.length);
+	                //var response2 = JSON.parse(body);
+	                //console.log(response.entries.length);
 	            });
-				//console.log(response.entries.length);
-	            //console.log(response.entries[1].value);
+
 	            //console.log(drug[1]);
 	            //console.log(response);
 	            //for (var i=0; i<response.entries.length; i++){
