@@ -65,12 +65,14 @@ io.sockets.on('connection', function (socket) {
 					console.log(body.entries.length);
 	            	console.log(body.entries[1].value);
 	                for (var i=0; i<body.entries.length; i++){
-	                	console.log("hi");
+	                	//console.log("hi");
 		                if (body.entries[i].value == drug[1]){
 		                	console.log(body.entries[i].synonyms[0]);
 		                	console.log('hello match here!');
+		                	drug[2] = body.entries[i].synonyms[0];
 		                }
 		            }
+
 ////////////////////COPY AND PASTE///////////////////////////////
 		            if (drug[2] == null){
 		                request.put({
