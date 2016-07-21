@@ -71,54 +71,47 @@ io.sockets.on('connection', function (socket) {
 		                	console.log('hello match here!');
 		                }
 		            }
+////////////////////COPY AND PASTE///////////////////////////////
+		            if (drug[2] == null){
+		                request.put({
+		                	headers: {
+		                        'Authorization': 'Bearer b9c554f76c3b471780436428dd458afd',
+		                        'Content-Type': 'application/json',
+		                        'Accept': 'application/json'
+		                    },
+		                    url: 'https://api.api.ai/v1/entities/drug/entries',
+		                    body: {
+		                    	"value": drug[1],
+		                    	"synonyms": [
+		                    		drug[1]
+		                    	]
+		                    },
+		                    json: true
+		                }, function(error, response, body){
+		                	console.log(body);
+		                });
+	            	}
+		            else {
+						request.put({
+		                	headers: {
+		                        'Authorization': 'Bearer b9c554f76c3b471780436428dd458afd',
+		                        'Content-Type': 'application/json',
+		                        'Accept': 'application/json'
+		                    },
+		                    url: 'https://api.api.ai/v1/entities/drug/entries',
+		                    body: {
+		                    	"value": drug[1],
+		                    	"synonyms": [
+		                    		drug[2]
+		                    	]
+		                    },
+		                    json: true
+		                }, function(error, response, body){
+		                	console.log(body);
+		                });
+		            }
+
 	            });
-	            //console.log(drug[1]);
-	            //console.log(response);
-	            //for (var i=0; i<response.entries.length; i++){
-	                //console.log("hi");
-	                //if (response.entries[i].value == drug[1]){
-	                	//console.log(response.entries[i].synonyms[0]);
-	                	//console.log('hello match here!');
-	                //}
-	            //}
-                if (drug[2] == null){
-	                request.put({
-	                	headers: {
-	                        'Authorization': 'Bearer b9c554f76c3b471780436428dd458afd',
-	                        'Content-Type': 'application/json',
-	                        'Accept': 'application/json'
-	                    },
-	                    url: 'https://api.api.ai/v1/entities/drug/entries',
-	                    body: {
-	                    	"value": drug[1],
-	                    	"synonyms": [
-	                    		drug[1]
-	                    	]
-	                    },
-	                    json: true
-	                }, function(error, response, body){
-	                	console.log(body);
-	                });
-	            }
-	            else {
-					request.put({
-	                	headers: {
-	                        'Authorization': 'Bearer b9c554f76c3b471780436428dd458afd',
-	                        'Content-Type': 'application/json',
-	                        'Accept': 'application/json'
-	                    },
-	                    url: 'https://api.api.ai/v1/entities/drug/entries',
-	                    body: {
-	                    	"value": drug[1],
-	                    	"synonyms": [
-	                    		drug[2]
-	                    	]
-	                    },
-	                    json: true
-	                }, function(error, response, body){
-	                	console.log(body);
-	                });
-	            }
             }
         }
     });
