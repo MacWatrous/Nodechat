@@ -50,6 +50,7 @@ io.sockets.on('connection', function (socket) {
             if (data.lastIndexOf("ADDE:") != -1){
                 var drug = data.split(": ");
                 console.log(drug);
+                var synonyms =[];
                 request.get({
 	                headers: {
 	                    'Authorization': 'Bearer b9c554f76c3b471780436428dd458afd',
@@ -69,7 +70,9 @@ io.sockets.on('connection', function (socket) {
 		                if (body.entries[i].value == drug[1]){
 		                	console.log(body.entries[i].synonyms[0]);
 		                	console.log('hello match here!');
-		                	drug[2] = body.entries[i].synonyms[0];
+		                	for (var j=0; j<body.entries[i].synonyms.length; j++){
+		                		synonyms.push(body.entries[i].synonyms[j]);
+		                	}
 		                }
 		            }
 
@@ -94,6 +97,7 @@ io.sockets.on('connection', function (socket) {
 		                });
 	            	}
 		            else {
+		            	synonyms.push(drug[2]);
 						request.put({
 		                	headers: {
 		                        'Authorization': 'Bearer b9c554f76c3b471780436428dd458afd',
@@ -103,9 +107,7 @@ io.sockets.on('connection', function (socket) {
 		                    url: 'https://api.api.ai/v1/entities/drug/entries',
 		                    body: {
 		                    	"value": drug[1],
-		                    	"synonyms": [
-		                    		drug[2]
-		                    	]
+		                    	"synonyms": synonyms
 		                    },
 		                    json: true
 		                }, function(error, response, body){
