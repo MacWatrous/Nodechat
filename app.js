@@ -31,7 +31,10 @@ io.sockets.on('connection', function (socket) {
         if (data.lastIndexOf("ADD") == -1)
         	io.sockets.emit('updatechat', socket.username, data);
         if (socket.username != 'bot'){
-            var request2 = app2.textRequest(data);
+            var request2 = app2.textRequest(data,
+            	{
+            		sessionId: socket.id
+            	});
             request2.on('response', function(response) {
                 console.log(response);
                 if (response.status.code == '200'){
