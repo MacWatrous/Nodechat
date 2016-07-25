@@ -1,0 +1,61 @@
+
+body
+ {
+  font-family: 'Montserrat', sans-serif;
+  color:black;  
+  
+ }
+
+
+
+
+#users {
+  float:left;
+  width:100px;
+
+  height:300px;padding:10px;
+  overflow:scroll-y;
+}
+
+
+#conversation {
+  float:left;
+  width:300px;
+  height:100px;
+  overflow:scroll-y;
+  padding-top:40px;
+}
+
+#data {
+  width:200px;
+  font-family: 'Montserrat' , sans-serif;
+  
+
+}
+
+#datasend {
+    font-family: 'Montserrat' , sans-serif;
+    border-radius:20%;
+    border:1px solid white;
+    background: orange;
+    color:white;
+    margin-left:5px;
+    
+}
+
+#datasend:hover {
+  background:blue;
+  color:white;
+}
+
+#optum {
+  height: 30px;
+  width:30px;
+}
+
+#container {
+  height:80px;
+  width:420px;
+
+  
+}
