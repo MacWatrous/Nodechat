@@ -1,6 +1,7 @@
 // Variable port setting for heroku
 
 var port = process.env.PORT || 3000;
+var path = require("path");
 var express = require('express');
 var app = express.createServer();
 var io = require('socket.io').listen(app);
