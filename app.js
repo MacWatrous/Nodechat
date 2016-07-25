@@ -16,10 +16,10 @@ io.configure(function () {
   io.set("polling duration", 10); 
 });
 
+app.use(express.static(path.join(__dirname, 'public')));
 // routing
 app.get('/', function (req, res) {
   res.sendfile(__dirname + '/index.html');
-  //res.sendfile(__dirname + '/public/chatbotstyle.css');
 });
 
 // usernames which are currently connected to the chat
