@@ -1,9 +1,10 @@
 // Variable port setting for heroku
 
 var port = process.env.PORT || 3000;
-var path = require("path");
-var express = require('express');
-var app = express.createServer();
+//var path = require("path");
+//var express = require('express');
+//var app = express.createServer();
+var app = require('express').createServer();
 var io = require('socket.io').listen(app);
 var apiai = require('apiai');
 var app2 = apiai("0b25372273e042f29d6333faec6d4065");
@@ -17,7 +18,7 @@ io.configure(function () {
   io.set("polling duration", 10); 
 });
 
-app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'public')));
 // routing
 app.get('/', function (req, res) {
   res.sendfile(__dirname + '/index.html');
